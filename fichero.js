@@ -1,4 +1,4 @@
-
+// comentario
 var mgdb = require('mongodb');
 var assert = require('assert');
 

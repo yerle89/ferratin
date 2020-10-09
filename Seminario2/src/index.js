@@ -7,4 +7,4 @@ async function main() {
     console.log("Server listen at port", server_port);
 }
 
-main()
+main();
