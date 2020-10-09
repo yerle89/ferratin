@@ -47,8 +47,6 @@ async function check_available_product_by_id(_id) {
 
 function remove_product_from_cart(_id) {
     cart_products.filter((cart_product, index) => {
-        1
-
         if (cart_product._id == _id) {
             if (cart_product.unidades > 1) {
                 cart_product.unidades--;
