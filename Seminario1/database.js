@@ -21,8 +21,15 @@ exports.get_products = async () => {
 
 exports.get_product_by_id = async (_id) => {
     const db = await connect();
-    const product = await db.collection('producto').find({ _id: _id }).toArray();
+    const product = (await db.collection('producto').find({ _id: _id }).toArray())[0];
     return product;
 }
 
-exports.connect = connect;
+exports.check_available_product_by_id = async (_id) => {
+    const product = await this.get_product_by_id(_id);
+    if (product.stock > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
