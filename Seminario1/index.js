@@ -1,5 +1,6 @@
 const carrito = require('./carrito_module');
 let scanf = require('scanf');
+require('dotenv').config();
 
 async function main() {
     while (true) {

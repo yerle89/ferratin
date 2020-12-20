@@ -1,11 +1,11 @@
 const mongodb = require('mongodb');
 
-const db_url = 'mongodb+srv://admin:Abcd1234@CarritoCompra.gfp2s.mongodb.net/carritocompradb/test?retryWrites=true&w=majority';
+
 const MongoClient = mongodb.MongoClient;
 
 async function connect() {
     try {
-        const client = await MongoClient.connect(db_url, { useUnifiedTopology: true })
+        const client = await MongoClient.connect(process.env.DB_URI, { useUnifiedTopology: true })
         const db = client.db('carritocompradb');
         return db;
     } catch (e) {
