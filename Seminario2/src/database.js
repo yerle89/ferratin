@@ -27,7 +27,7 @@ exports.get_product_by_id = async (_id) => {
 
 exports.check_available_product_by_id = async (_id) => {
     const product = await this.get_product_by_id(_id);
-    if (product.stock > 0) {
+    if (product && product.stock > 0) {
         return true;
     } else {
         return false;
