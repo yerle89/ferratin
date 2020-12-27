@@ -70,10 +70,13 @@ nickname_form.addEventListener('submit', e => {
 
 text_message_form.addEventListener('submit', e => {
     e.preventDefault();
+    messages.innerHTML += `<li class="own">
+        ${text_message.value}</li>`;
     socket.emit('send_text_message_to_server', {
         nickname: nickname_logged.value,
         message: text_message.value
     });
+    text_message.value = ''
 });
 
 text_message.addEventListener('keyup', () => {

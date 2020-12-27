@@ -28,7 +28,7 @@ exports.add_product_to_cart_by_id = async function (_id) {
         if (cart_products.get(_id) === undefined) {
             let new_product = available_products.get(_id);
             //Hacer consulta sobre la base de datos y comprobar stock
-            cart_products.set(_id, { name: new_product.name, units: 1 });
+            cart_products.set(_id, { id: _id, name: new_product.name, units: 1 });
         } else {
             cart_products.get(_id).units++;
         }
