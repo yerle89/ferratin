@@ -25,9 +25,9 @@ exports.get_cart_products = function () {
 
 exports.add_product_to_cart_by_id = async function (_id) {
     if (await products_db.check_available_product_by_id(_id)) {
+        await products_db.get_product_by_id(_id, true);
         if (cart_products.get(_id) === undefined) {
             let new_product = available_products.get(_id);
-            //Hacer consulta sobre la base de datos y comprobar stock
             cart_products.set(_id, { id: _id, name: new_product.name, units: 1 });
         } else {
             cart_products.get(_id).units++;
@@ -37,8 +37,9 @@ exports.add_product_to_cart_by_id = async function (_id) {
     }
 }
 
-exports.remove_product_from_cart_by_id = function (_id) {
+exports.remove_product_from_cart_by_id = async function (_id) {
     if (cart_products.get(_id)) {
+        await products_db.add_product_stock_by_id(_id, 1);
         if (cart_products.get(_id).units == 1) {
             cart_products.delete(_id);
         } else {

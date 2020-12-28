@@ -4,8 +4,11 @@ require('dotenv').config();
 
 async function main() {
     while (true) {
+        console.log("");
+        console.log("###########################");
         console.log("Carrito:", carrito.get_cart_products());
-        console.log("Articulos disponibles:", await carrito.get_available_products());
+        console.log("Articulos disponibles:");
+        console.log(await carrito.get_available_products());
         console.log("####### Acciones: #########");
         console.log("1:Añadir articulo al Carrito");
         console.log("2:Eliminar articulo del Carrito\n\n");
