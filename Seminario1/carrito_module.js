@@ -1,11 +1,6 @@
 const products_db = require('./database');
 let available_products = new Map();
 const cart_products = new Map();
-/* ejemplo de cart = [{
-    id: 1,
-    name: "iPhone",
-    unidades = 3
-}]*/
 
 exports.get_available_products = async function () {
     const products = await products_db.get_products();
