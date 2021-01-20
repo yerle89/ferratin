@@ -1,12 +1,13 @@
 # our base image
-# docker build -t carritorest .
-# docker run -p 3000:3000 -d --name carritoRestContainer carritorest
+# docker build -t chat .
+# docker run -p 3000:3000 -d --name chatContainer chat
 FROM node
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-COPY src/ ./
+COPY public/ ./public
+COPY index.js ./
 
 RUN npm install
 
