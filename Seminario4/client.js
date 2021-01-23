@@ -1,7 +1,6 @@
 const zmq = require('zeromq/v5-compat');
 const req = zmq.socket('req');
 const scanf = require('scanf');
-const { finished } = require('stream');
 require('dotenv').config();
 
 req.connect('tcp://127.0.0.1:8000');
@@ -60,9 +59,12 @@ req.on('message', data => {
 });
 
 function displayActions() {
-        console.log("####### Acciones: #########");
-        console.log("1:Añadir articulo al Carrito");
-        console.log("2:Eliminar articulo del Carrito\n\n");
+        console.log('####### Acciones: #########');
+        console.log('1:Listar productos disponibles');
+        console.log('2:Listar productos de mi carrito');
+        console.log('3:Añadir articulo al carrito');
+        console.log('4:Eliminar articulo del carrito');
+        console.log('5: Cerrar carrito\n\n');
         console.log("Introducir acción:");
         let action = scanf('%d');
         let _id;
@@ -74,12 +76,12 @@ function displayActions() {
                 get_cart_products();
                 break;
             case 3:
-                console.log("Selecciona el id del producto:");
+                console.log('Selecciona el id del producto:');
                 _id = scanf('%d');
                 add_product_to_cart_by_id(_id);
                     break;
             case 4:
-                console.log("Selecciona el id del producto:");
+                console.log('Selecciona el id del producto:');
                 _id = scanf('%d');
                 remove_product_from_cart_by_id(_id);
                 break;

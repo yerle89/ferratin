@@ -37,11 +37,15 @@ clients_socket.on('message', (client_id, del, data) => {
 workers_socket.on('message', (worker_id, del, data) => {
     const parsed_worker_id = JSON.stringify(worker_id.toJSON());
     const parsed_data = JSON.parse(data);
-    if (parsed_data.type == 'new_cart') {
+    if (parsed_data.type === 'new_cart') {
         const job = clients_waiting_for_cart_creation_with_a_job.shift();
         association_client_worker.set(job.client_id, parsed_worker_id);
         workers_socket.send([worker_id, del, JSON.stringify(job)]);
-    } else if (parsed_data.type == 'response') {
+    } else if (parsed_data.type === 'response') {
+        clients_socket.send([Buffer.from(JSON.parse(parsed_data.client_id)), del, JSON.stringify({ message: parsed_data.message })]);
+    } else if (parsed_data.type === 'finish_cart') {
+        association_client_worker.delete(parsed_data.client_id);
         clients_socket.send([Buffer.from(JSON.parse(parsed_data.client_id)), del, JSON.stringify({ message: parsed_data.message })]);
     }
+    console.log(association_client_worker.size);
 });
