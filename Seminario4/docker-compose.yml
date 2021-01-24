@@ -1,0 +1,21 @@
+version: '3'
+services:
+  cliA:
+    image: client
+    build: ./client/
+    links:
+      - bro
+      - worA
+      
+  worA:
+    image: worker
+    build: ./worker/
+    links:
+      - bro
+
+  bro:
+    image: broker
+    build: ./broker/
+    expose:
+      - "8000"
+      - "8001"

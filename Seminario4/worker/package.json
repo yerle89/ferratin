@@ -1,0 +1,17 @@
+{
+  "name": "seminario4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "broker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.6.3",
+    "scanf": "^1.1.2",
+    "zeromq": "^6.0.0-beta.6"
+  }
+}

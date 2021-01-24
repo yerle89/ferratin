@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO chat</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+  <div id="div_nickname">
+    <form id="nickname_form" action="">
+      <input id="nickname_login" autocomplete="off" /><button id="btn_connect">Connect</button>
+    </form>
+  </div>
+
+  <div id="div_chat" style="display: none;">
+    <input id="nickname_logged" autocomplete="off" />
+    <div id="connected_users"></div>
+    <ul id="messages"></ul>
+    <div id="typing_users"></div>
+    <form id="text_message_form" action="">
+      <input id="text_message" autocomplete="off" /><button id="btn_send">Send</button>
+    </form>
+  </div>
+
+
+  <!-- scripts -->
+  <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+  <script src="chat.js" charset="utf-8"></script>
+</body>
+
+</html>
