@@ -27,8 +27,9 @@ exports.add_product_to_cart_by_id = async function (_id) {
         } else {
             cart_products.get(_id).units++;
         }
+        return 'Producto añadido al carrito';
     } else {
-        console.log('No hay stock de este producto!');
+        return 'No hay stock de este producto!';
     }
 }
 
@@ -40,7 +41,8 @@ exports.remove_product_from_cart_by_id = async function (_id) {
         } else {
             cart_products.get(_id).units--;
         }
+        return 'Producto retirado del carrito';
     } else {
-        console.log('No existe este producto en el carrito!');
+        return 'No existe este producto en el carrito!';
     }
 }

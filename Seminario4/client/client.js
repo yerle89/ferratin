@@ -1,9 +1,8 @@
 const zmq = require('zeromq/v5-compat');
 const req = zmq.socket('req');
 const scanf = require('scanf');
-require('dotenv').config();
 
-req.connect('tcp://127.0.0.1:8000');
+req.connect('tcp://bro:8000');
 
 function get_available_products() {
     const request_data = {
@@ -43,7 +42,7 @@ function remove_product_from_cart_by_id(_id) {
     req.send(JSON.stringify(request_data));
 }
 
-function finsih_cart(_id) {
+function finish_cart(_id) {
     const request_data = {
         message: {
             action: 'finish_cart'
@@ -64,7 +63,8 @@ function displayActions() {
         console.log('2:Listar productos de mi carrito');
         console.log('3:Añadir articulo al carrito');
         console.log('4:Eliminar articulo del carrito');
-        console.log('5: Cerrar carrito\n\n');
+        console.log('5:Cerrar carrito');
+        console.log('6:Salir\n\n');
         console.log("Introducir acción:");
         let action = scanf('%d');
         let _id;
@@ -86,7 +86,11 @@ function displayActions() {
                 remove_product_from_cart_by_id(_id);
                 break;
             case 5:
-                finsih_cart();
+                finish_cart();
+                break;
+            case 6:
+                finish_cart();
+                process.exit(0)
                 break;
         }
 }
